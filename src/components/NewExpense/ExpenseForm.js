@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
+  const [selectedCurrency, setSelectedCurrency] = useState("Rs.");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
+  };
+
+  const currencyChangeHandler = (event) => {
+    setSelectedCurrency(event.target.value);
   };
 
   const amountChangeHandler = (event) => {
@@ -22,6 +27,7 @@ const ExpenseForm = (props) => {
     const expenseData = {
       title: enteredTitle,
       date: new Date(enteredDate),
+      currency: selectedCurrency,
       amount: +enteredAmount,
     };
     props.onSaveExpenseData(expenseData);
@@ -45,6 +51,14 @@ const ExpenseForm = (props) => {
 
         <div className="new-expense__control">
           <label>Amount</label>
+          <select
+            className="new-expense__select"
+            onChange={currencyChangeHandler}
+          >
+            <option name="ruppee">Rs.</option>
+            <option name="dollar">$</option>
+          </select>
+
           <input
             required={true}
             type="number"
