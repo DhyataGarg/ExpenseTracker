@@ -36,11 +36,13 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        <h3 className="total-expenses">
-          Total expense for {filteredYear} is $
-          {(totalExpenses / 75.09).toFixed(2)} (Rs.
-          {totalExpenses.toFixed(2)})
-        </h3>
+        {filteredExpenses.length > 0 && (
+          <h3 className="total-expenses">
+            Total expense for {filteredYear} is $
+            {(totalExpenses / 75.09).toFixed(2)} (Rs.
+            {totalExpenses.toFixed(2)})
+          </h3>
+        )}
         <ExpensesChart expenses={filteredExpenses} />
         <ExpenseList items={filteredExpenses} />
       </Card>
