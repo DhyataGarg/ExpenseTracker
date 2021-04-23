@@ -50,6 +50,7 @@ const Expenses = (props) => {
         <ExpenseList
           items={filteredExpenses}
           selectedCurrency={selectedCurrency}
+          onDelete={props.onDelete}
         />
       </Card>
     </div>

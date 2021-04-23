@@ -35,6 +35,7 @@ const DUMMY_EXPENSES = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  let i = 0;
 
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
@@ -42,10 +43,35 @@ const App = () => {
     });
   };
 
+  const onDeleteHandler = (expenseID) => {
+    setExpenses((prevExpenses) => {
+      const updatedExpenses = prevExpenses.filter(
+        (expense) => expense.id !== expenseID
+      );
+      return updatedExpenses;
+    });
+  };
+
+  const onEditHandler = (
+    expenseID,
+    newTitle,
+    newCurrency,
+    newAmount,
+    newDate
+  ) => {
+    while (expenseID !== expenses[i].id) {
+      i++;
+    }
+    expenses[i].title = newTitle;
+    expenses[i].date = newDate;
+    expenses[i].currency = newCurrency;
+    expenses[i].amount = newAmount;
+  };
+
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
+      <Expenses items={expenses} onDelete={onDeleteHandler} />
     </div>
   );
 };

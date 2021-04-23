@@ -35,6 +35,10 @@
   border-radius: 12px;
 }
 
+.fa-trash {
+  color: white;
+}
+
 @media (min-width: 580px) {
   .expense-item__description {
     flex-direction: row;
