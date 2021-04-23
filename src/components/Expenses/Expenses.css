@@ -5,3 +5,8 @@
   width: 50rem;
   max-width: 95%;
 }
+
+.total-expenses {
+  color: white;
+  text-align: center;
+}
