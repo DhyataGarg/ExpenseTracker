@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
-import LoginCard from "./components/Login/LoginCard";
 import AuthContext from "./store/auth-context";
 import MainHeader from "./components/MainHeader/MainHeader";
 
@@ -56,32 +55,13 @@ const App = () => {
     });
   };
 
-  // const onEditHandler = (
-  //   expenseID,
-  //   newTitle,
-  //   newCurrency,
-  //   newAmount,
-  //   newDate
-  // ) => {
-  //   while (expenseID !== expenses[i].id) {
-  //     i++;
-  //   }
-  //   expenses[i].title = newTitle;
-  //   expenses[i].date = newDate;
-  //   expenses[i].currency = newCurrency;
-  //   expenses[i].amount = newAmount;
-  // };
   return (
     <div>
-      {!authCtx.isLoggedIn ? (
-        <LoginCard />
-      ) : (
         <React.Fragment>
           <MainHeader />
           <NewExpense onAddExpense={addExpenseHandler} />
           <Expenses items={expenses} onDelete={onDeleteHandler} />
         </React.Fragment>
-      )}
     </div>
   );
 };
