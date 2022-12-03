@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
-import AuthContext from "./store/auth-context";
 import MainHeader from "./components/MainHeader/MainHeader";
 
 const DUMMY_EXPENSES = [
@@ -36,7 +35,6 @@ const DUMMY_EXPENSES = [
 ];
 
 const App = () => {
-  const authCtx = useContext(AuthContext);
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
   // let i = 0;
 
